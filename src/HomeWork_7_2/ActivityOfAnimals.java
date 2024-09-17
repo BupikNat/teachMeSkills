@@ -1,7 +1,5 @@
 package HomeWork_7_2;
 
-import HomeWork_7_1.CanSwim;
-
 import java.util.Random;
 
 public class ActivityOfAnimals {

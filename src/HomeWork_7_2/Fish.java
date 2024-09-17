@@ -1,7 +1,5 @@
 package HomeWork_7_2;
 
-import HomeWork_7_1.CanSwim;
-
 public class Fish extends Animals implements CanSwim {
     private static int nextId;
 
