@@ -33,7 +33,5 @@ public class Call {
         String[] allNumbers = {"375(29)111-11-11","375(29)222-22-22", "375(29)333-33-33"};
         firstCall.sendMessage(allNumbers);
     }
-
-
 }
 

@@ -10,31 +10,29 @@ package HomeWork_8_2;
 
 public class BaseConverter {
 
-    public void convert(double temperature, Scale inputScale) {
-        double result;
-        Scale outputScale;
-
-        switch (inputScale) {
-            case CELSIUS:
-                result = temperature;
-                outputScale = Scale.CELSIUS;
-                System.out.println("Celsius temperature is : " + temperature + " C");
-                break;
-            case KELVIN:
-                result = temperature - 273.15;
-                outputScale = Scale.CELSIUS;
-                System.out.println("Kelvin temperature: " + temperature + " K");
-                break;
-            case FAHRENHEIT:
-                result = (temperature - 32) / 1.8;
-                outputScale = Scale.CELSIUS;
-                System.out.println("Fahrenheit temperature: " + temperature + " F");
-                break;
-            default:
-                System.out.println("Invalid input scale");
-                return;
+    // Метод для конвертации температуры
+    public double convert(double value, Scale fromScale, Scale toScale) {
+        // Если шкалы одинаковые, возвращаем исходное значение
+        if (fromScale == toScale) {
+            return value;
         }
 
-        System.out.println("Converted " + result + " " + outputScale);
+        double celsiusValue = value;
+
+        // Преобразование к Цельсию, если шкала не Цельсий
+        if (fromScale == Scale.FAHRENHEIT) {
+            celsiusValue = (value - 32) / 1.8; // Фаренгейт в Цельсий
+        } else if (fromScale == Scale.KELVIN) {
+            celsiusValue = value - 273.15; // Кельвин в Цельсий
+        }
+
+        // Преобразование из Цельсия в целевую шкалу
+        if (toScale == Scale.FAHRENHEIT) {
+            return celsiusValue * 1.8 + 32; // Цельсий в Фаренгейт
+        } else if (toScale == Scale.KELVIN) {
+            return celsiusValue + 273.15; // Цельсий в Кельвин
+        }
+
+        return celsiusValue; // Если цель Цельсий, просто вернуть значение
     }
 }
